@@ -12,7 +12,12 @@ public class Order {
     /**
      * Adds an idem to an order
      */
-    public void addItem(){
+    public void addItemToOrder(){
+
+        sa
+
+
+        orderList.add();
 
     }
 
