@@ -1,5 +1,11 @@
 package Order.impl;
 
+import OrderItem.AdditionalItems;
+import OrderItem.Drink;
+import OrderItem.MainItem;
+import OrderItem.SideOrder;
+import com.sun.tools.javac.Main;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,7 +20,44 @@ public class Order {
      */
     public void addItemToOrder(){
 
-        sa
+        System.out.println("Please select the item type you wish to add to the order: \n" +
+                "[1] Main \n" +
+                "[2] Sides \n" +
+                "[3] Drinks \n" +
+                "[4] Additional Items \n\n" +
+                "Please enter the number of the item type...");
+
+        Scanner sc = new Scanner(System.in);
+        int input = sc.nextInt();
+
+        while (input<0 || input >4){
+            System.out.println("You have entered an invalid options. ");
+            System.out.println();
+            System.out.println("Please select the item type you wish to add to the order: \n" +
+                    "[1] Main \n" +
+                    "[2] Sides \n" +
+                    "[3] Drinks \n" +
+                    "[4] Additional Items \n\n" +
+                    "Please enter the number of the item type...");
+            input=sc.nextInt();
+        }
+
+        Object item = switch(input){
+            case 1-> new MainItem();
+            case 2-> new SideOrder();
+            case 3-> new Drink();
+            case 4-> new AdditionalItems();
+            default -> "Error";
+        };
+
+        if (item instanceof MainItem)(
+                MainItem mainItem = new MainItem();
+
+                )
+
+
+
+
 
 
         orderList.add();
