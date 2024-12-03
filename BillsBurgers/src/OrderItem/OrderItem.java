@@ -7,22 +7,33 @@ import java.util.Scanner;
 /**
  * An Individual Order Item that is added to an order.
  */
-public abstract class OrderItem {
+public class OrderItem {
 
     private ArrayList<String> itemsSelected = new ArrayList<String>();
     protected ArrayList<String> selectableItems = new ArrayList<String>();
+
+    public String getItemType() {
+        return ItemType;
+    }
+
+    public ArrayList<String> getItemsSelected() {
+        return itemsSelected;
+    }
+
     protected String ItemType;
+
 
     protected void addAddionalItem(String item) {
         this.selectableItems.add(item);
     }
 
-    protected void addAdditionalItemToOrder() {
-        this.itemsSelected.add(selectItem(this.selectableItems));
+    public void addAdditionalItemToOrder() {
+
+        this.itemsSelected.add(selectItem());
 
     }
 
-    protected void printItemsSelected() {
+    public void printItemsSelected() {
         StringBuilder sb = new StringBuilder();
         String x = this.ItemType+": \n";
         sb.append(x);
@@ -34,13 +45,14 @@ public abstract class OrderItem {
     }
 
 
-    private String selectItem(ArrayList<String> items) {
+    private String selectItem() {
         try {
             StringBuilder sb = new StringBuilder();
             sb.append("Please select from the following options:\n ");
 
-            for (int i = 0; i <= items.size(); i++) {
-                String x = "Press " + i + 1 + " for "+items.get(i)+".\n";
+            for (int i = 0; i < this.selectableItems.size(); i++) {
+                int count = i+1;
+                String x = "Press " + count + " for "+this.selectableItems.get(i)+".\n";
                 sb.append(x);
             }
 
@@ -49,17 +61,19 @@ public abstract class OrderItem {
             Scanner sc = new Scanner(System.in);
             int input = sc.nextInt();
 
-            while (input < 0 || input > items.size()) {
+            while (input < 0 || input > this.selectableItems.size()) {
                 System.out.println("Invalid selection. Please choose an valid option");
                 System.out.println();
                 System.out.println(sb.toString());
                 input = sc.nextInt();
             }
-            return items.get(input - 1);
+            return this.selectableItems.get(input - 1);
         } catch (Exception e) {
             System.out.println("Ooops. Something went wrong.");
+            System.out.println("Error location: OrderItem.SelectItem");
 
         }
+
         return "-1";
     }
 }
