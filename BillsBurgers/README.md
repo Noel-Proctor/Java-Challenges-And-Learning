@@ -5,7 +5,7 @@ The purpose of this application was to allow me to refresh my OOP knowledge afte
 
 Functionality:
 
-1. The user can first choose wether the meal is to sit in or take away:
+1. The user can first choose wether the meal to sit in or take away:
    
    ![image](https://github.com/user-attachments/assets/14595484-e2ae-4521-b931-7523c56e65fd)
 
@@ -23,7 +23,7 @@ Functionality:
    ![image](https://github.com/user-attachments/assets/1f9ec6e9-a45b-4909-a91a-6f200d3d67a9)
 
 
-I have decided to leave this mini project here to begin learning other topics/ begin other projects. I may come back to it in the future to continue development, I may not. 
+This was a very basic project for me to practice principles of OOP. I have decided to leave this mini project here to begin learning other topics/projects. I may come back to it in the future to continue development, I may not. 
 
 Some future improvements:
 - Add mappings to store a price for each item to calculate total cost.
