@@ -23,11 +23,13 @@ Functionality:
    ![image](https://github.com/user-attachments/assets/1f9ec6e9-a45b-4909-a91a-6f200d3d67a9)
 
 
+I have decided to leave this mini project here to begin learning other topics/ begin other projects. I may come back to it in the future to continue development, I may not. 
 
-
-
-Improvements:
+Some future improvements:
+- Add mappings to store a price for each item to calculate total cost.
+- Add logic to generate an order number and order status once an order is placed.
 - Add unit testing
 - Improve class structure
 - Add a database connection to populate meal/ item options rather than building in code.
-- Add mappings to store a price for each item to calculate total cost.
+- Add and connect a front end to improve user experience.
+
