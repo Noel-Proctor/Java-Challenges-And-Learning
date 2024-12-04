@@ -11,6 +11,7 @@ public class OrderItem {
 
     private ArrayList<String> itemsSelected = new ArrayList<String>();
     protected ArrayList<String> selectableItems = new ArrayList<String>();
+    protected String ItemType;
 
     public String getItemType() {
         return ItemType;
@@ -19,9 +20,6 @@ public class OrderItem {
     public ArrayList<String> getItemsSelected() {
         return itemsSelected;
     }
-
-    protected String ItemType;
-
 
     protected void addAddionalItem(String item) {
         this.selectableItems.add(item);
@@ -38,12 +36,11 @@ public class OrderItem {
         String x = this.ItemType+": \n";
         sb.append(x);
         for (int i = 0; i < itemsSelected.size(); i++) {
-            String s = "[" + i + 1 + "] " + itemsSelected.get(i);
+            String s = "\t\t[" + i + 1 + "] " + itemsSelected.get(i);
             sb.append(s);
         }
         System.out.println(sb);
     }
-
 
     private String selectItem() {
         try {
@@ -73,7 +70,6 @@ public class OrderItem {
             System.out.println("Error location: OrderItem.SelectItem");
 
         }
-
         return "-1";
     }
 }

@@ -8,18 +8,20 @@ import java.util.Scanner;
 public class Order {
 
     private final OrderType orderType = new OrderType();
-    private ArrayList<OrderItem> orderList = new ArrayList();
+    private ArrayList<OrderItem> orderList = new ArrayList<>();
+    private ArrayList<MealDeal> mealDeals = new ArrayList<>();
 
     /**
      * Adds an idem to an order
      */
 
     public void newOrder(){
-        orderType.setOrderType();
+        setOrderType();
         placeOrder();
     }
 
 
+    @SuppressWarnings("LoopConditionNotUpdatedInsideLoop")
     private void placeOrder(){
 
         addItemToOrder();
@@ -53,11 +55,15 @@ public class Order {
 
 
     private void cancelOrder(){
-        System.out.println("Do cancel order stuff");
+        System.out.println();
+        System.out.println("Your order has been cancelled.");
+        System.out.println();
     }
 
     private void processOrder(){
-        System.out.println("Do process order stuff...");
+        System.out.println();
+        System.out.println("Thank you for shopping at Bills Burgers. Please come back again soon.");
+        System.out.println();
     }
 
 
@@ -66,39 +72,45 @@ public class Order {
                 "[1] Main \n" +
                 "[2] Sides \n" +
                 "[3] Drinks \n" +
-                "[4] Additional Items \n\n" +
+                "[4] Additional Items \n" +
+                "[5] Meal Deal \n\n"+
                 "Please enter the number of the item type...");
 
         Scanner sc = new Scanner(System.in);
         int input = sc.nextInt();
 
-        while (input<0 || input >4){
+        while (input<0 || input >5){
             System.out.println("You have entered an invalid options. ");
             System.out.println();
             System.out.println("Please select the item type you wish to add to the order: \n" +
                     "[1] Main \n" +
                     "[2] Sides \n" +
                     "[3] Drinks \n" +
-                    "[4] Additional Items \n\n" +
+                    "[4] Additional Items \n" +
+                    "[5] Meal Deal \n\n"+
                     "Please enter the number of the item type...");
             input=sc.nextInt();
         }
 
+        if (input== 5){
+            MealDeal meal = new MealDeal();
+            this.mealDeals.add(meal);
 
-        OrderItem item = switch(input){
-            case 1-> new MainItem();
-            case 2-> new SideOrder();
-            case 3-> new Drink();
-            case 4-> new AdditionalItems();
-            default -> new MainItem();
-        };
+        }else{
+            OrderItem item = switch(input){
+                case 1-> new MainItem();
+                case 2-> new SideOrder();
+                case 3-> new Drink();
+                case 4-> new AdditionalItems();
+                default -> new MainItem();
+            };
 
-        item.addAdditionalItemToOrder();
-        orderList.add(item);
-
+            item.addAdditionalItemToOrder();
+            orderList.add(item);
+        }
     }
 
-    public void setOrderType() {
+    private void setOrderType() {
         this.orderType.setOrderType();
     }
 
@@ -107,12 +119,38 @@ public class Order {
     }
 
     public void printCurrentOrder(){
-        StringBuilder sb = new StringBuilder();
-        sb.append("Your current order is: \n");
 
+
+
+        System.out.println();
+        System.out.println("----------------------------------------");
+        System.out.println();
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < mealDeals.size(); i++) {
+            MealDeal item = mealDeals.get(i);
+            String x = item.getOrderType()+" \n";
+            sb.append(x);
+            MainItem mainItem = item.getMain();
+            Drink drink = item.getDrink();
+            SideOrder side = item.getSideOrder();
+
+            x = "\t\t "+mainItem.getItemType()+": "+mainItem.getItemsSelected();
+            sb.append(x).append(System.lineSeparator());
+
+            x = "\t\t "+side.getItemType()+": "+side.getItemsSelected();
+            sb.append(x).append(System.lineSeparator());
+
+            x = "\t\t "+drink.getItemType()+": "+drink.getItemsSelected();
+            sb.append(x).append(System.lineSeparator());
+        }
+        System.out.println(sb);
         for (OrderItem item : this.orderList) {
             item.printItemsSelected();
         }
+
+        System.out.println();
+        System.out.println("----------------------------------------");
+        System.out.println();
     }
 
     /**
