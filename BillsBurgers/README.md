@@ -9,6 +9,20 @@ Functionality:
    
    ![image](https://github.com/user-attachments/assets/14595484-e2ae-4521-b931-7523c56e65fd)
 
+2. The user can then select from a range of order options:
+
+   ![image](https://github.com/user-attachments/assets/ac578062-d492-4a33-b1c1-8ddbb749db51)
+
+3. If the user selects a meal deal, they will then be prompted to select a main, side, and a drink of choice. Once the selection has been made
+   the user will be shown their current order and asked if they want to add another item, complete their order, or cancel the order:
+
+   ![image](https://github.com/user-attachments/assets/7fe10ace-3608-4243-9100-56eb2393ecbb)
+
+4. The user can add as many items as they wish:
+
+   ![image](https://github.com/user-attachments/assets/1f9ec6e9-a45b-4909-a91a-6f200d3d67a9)
+
+
 
 
 
